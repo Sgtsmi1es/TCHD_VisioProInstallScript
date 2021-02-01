@@ -1,4 +1,4 @@
-## Visio Install Script v4 created by Matt Leach
+## Visio Install Script v0.4.1 created by Matt Leach
 ##this script is intended to install office 365 and visio pro 2019 using a provided key from our group.
 ##
 Write-Output "Welcome to the TCHD Visio 2019 Pro installer"
@@ -45,6 +45,7 @@ Write-Output "File Created, executing install of Visio Pro 2019 and Office 365"
 ##This should run the install of office and visio 2019 pro based on the created xml file VisioInstall.xml
 Write-Output "Starting download..." ##Starting download of 0365+Visio Pro 2019
 ./setup.exe /download .\VisioInstall.xml ##This should work but untested
+##loop for showing progress on download of office and visio
 loop
 $size = Get-ChildItem -Path .\office -Sum ##loops until the var "size" does not change
 Write-Output $size ##This should show the size of the download as a way to flag if the download is slow or not working, outputs to the console window
