@@ -7,7 +7,7 @@ New-Item -Name "VisioBase.xml"
 ## This creates the XML file to use in the install
 $xmlcontent = @"
 <Configuration ID="55ef1db3-aef4-4217-a41d-42a7e143f4bb">
-  <Add OfficeClientEdition="64" Channel="MonthlyEnterprise">
+  <Add OfficeClientEdition="64" Channel="Current">
     <Product ID="O365ProPlusRetail">
       <Language ID="en-us" />
       <ExcludeApp ID="Groove" />
@@ -43,9 +43,9 @@ $con | % { $_.Replace("VISIOKEY", $Key) } | Set-Content .\VisioInstall.xml
 Write-Output "File Created, executing install of Visio Pro 2019 and Office 365"
 ##This should run the install of office and visio 2019 pro based on the created xml file VisioInstall.xml
 Write-Output "Starting download..."
-setup /download .\VisioInstall.xml ##This should work but untested
+./setup.exe /download .\VisioInstall.xml ##This should work but untested
 Write-Output "Download complete starting install..."
-setup /configure .\VisioInstall.xml ##This should work but untested
+./setup.exe /configure .\VisioInstall.xml ##This should work but untested
 Write-Output "Install complete, press any key to clean up."
 $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
 ##cleanup
